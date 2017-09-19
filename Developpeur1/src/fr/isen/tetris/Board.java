@@ -33,7 +33,7 @@ public class Board extends JPanel implements ActionListener {
    * 
    * Description : Adapter pour les touches du clavier <br/>
    */
-  /*class TAdapter extends KeyAdapter {
+  class TAdapter extends KeyAdapter {
 
     
     @Override
@@ -80,7 +80,7 @@ public class Board extends JPanel implements ActionListener {
           break;
       }
     }
-  }*/
+  }
 
   /**
    * Serial UID
