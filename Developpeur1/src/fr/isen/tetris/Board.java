@@ -16,7 +16,6 @@ import javax.swing.Timer;
 /**
  * Project : Tetris <br/>
  * Package : fr.isen.tetris <br/>
- * 
  * Description : Classe représentant une forme géométrique <br/>
  * Possède une liste finie définie dans l'énumération imbriquée Tetrominoes
  * 
@@ -32,7 +31,7 @@ public class Board extends JPanel implements ActionListener {
    * 
    * Description : Adapter pour les touches du clavier <br/>
    */
-  /*class TAdapter extends KeyAdapter {
+  class TAdapter extends KeyAdapter {
 
     
     @Override
@@ -79,7 +78,7 @@ public class Board extends JPanel implements ActionListener {
           break;
       }
     }
-  }*/
+  }
 
   /**
    * Serial UID
