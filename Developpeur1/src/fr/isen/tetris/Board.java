@@ -19,7 +19,11 @@ import javax.swing.Timer;
  * Description : Classe représentant une forme géométrique <br/>
  * Possède une liste finie définie dans l'énumération imbriquée Tetrominoes
  * 
+<<<<<<< HEAD
  * @author DEV2
+=======
+ * @author DEV1
+>>>>>>> 8e3f8865d40199a6244a6adcaf73625ecb8321ff
  * @see http://zetcode.com/tutorials/javagamestutorial/tetris/
  */
 public class Board extends JPanel implements ActionListener {
