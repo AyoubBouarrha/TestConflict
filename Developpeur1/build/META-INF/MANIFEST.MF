@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.8
+Created-By: 1.8.0_111-b14 (Oracle Corporation)
+Built-By: moi
+Main-Class: fr.isen.tetris.Tetris
+Class-Path: ../lib/commons-lang3-3.5.jar ../lib/hamcrest-core-1.3.jar 
+ ../lib/junit-4.12.jar
+
+Name: common
+Date-Version: January 20 2017 1605
+

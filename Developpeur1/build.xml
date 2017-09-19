@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE project>
+<project name="fr.isen.Tetris" default="all" xmlns:ivy="antlib:org.apache.ivy.ant" basedir=".">
+
+	<!--
+    ** Chargement des propriétés
+    -->
+	<property file="build.properties" />
+
+	<property name="src.dir" location="${basedir}/src" />
+	<property name="lib.dir" location="${basedir}/lib" />
+	<property name="test.dir" location="${basedir}/test" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="dist.dir" value="${basedir}/dist" />
+
+	<property name="app.name" location="Tetris" value="Tetris" />
+	<property name="main-class" value="fr.isen.tetris.Tetris"/>
+
+	<property name="junit.output.dir" value="${basedir}/junit" />
+
+	<!--
+	 ** Define the classpath for this project 
+	-->
+	<path id="project.classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+	</path>
+
+	<!-- ==================== All Target ====================================== -->
+
+	<target name="all" description="Clean build and dist directories, then 	">
+		<antcall target="clean" />
+		<antcall target="retrieve" />
+		<antcall target="compile" />
+		<antcall target="dist" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${lib.dir}" />
+
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${lib.dir}" />
+	</target>
+
+	<!--
+	  ** Récupère la configuration ivy
+	-->
+	<target name="retrieve" description="retrieve default configuration for the project + compile time dependencies">
+		<ivy:settings />
+		<ivy:resolve />
+		<ivy:retrieve sync="true" type="jar" />
+	</target>
+
+	<!--  ==================== Options de Compilation ==================== -->
+
+	<property name="compile.debug" value="true" />
+	<property name="compile.deprecation" value="false" />
+	<property name="compile.optimize" value="true" />
+
+	<path id="compile.classpath">
+		<pathelement location="${build.dir}" />
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+	</path>
+	
+	<path id="libraries.path">    
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+	<!-- Compilation -->
+	<target name="compile" description="Compile Java sources">
+		<mkdir dir="${build}"/>
+		<javac destdir="${build.dir}" executable="${javac.version}">
+			<src path="${src.dir}" />
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+	
+	<target name="compile-test" description="Compile Java sources">
+
+		<javac destdir="${build.dir}" executable="${javac.version}">
+			<src path="${test.dir}" />
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="dist" description="Create binary distribution">
+		<tstamp />
+		<!-- Création du META-INF -->
+		<mkdir dir="${build.dir}/META-INF" />
+		
+		<manifestclasspath property="manifest.classpath" jarfile="${dist.dir}/${app.name}.jar">
+            <classpath refid="libraries.path"/>
+        </manifestclasspath>
+
+		<manifest file="${build.dir}/META-INF/MANIFEST.MF">
+			<attribute name="Built-By" value="moi" />
+			<attribute name="Main-Class" value="${main-class}"/>
+            <attribute name="Class-Path" value="${manifest.classpath}"/>
+			<section name="common">
+				<attribute name="Date-Version" value="${TODAY} ${TSTAMP}" />
+			</section>
+		</manifest>
+
+		<!-- Create application JAR file -->
+		<mkdir dir="${dist.dir}" />
+		<jar jarfile="${dist.dir}/${app.name}.jar" basedir="${build.dir}" manifest="${build.dir}/META-INF/MANIFEST.MF" />
+
+	</target>
+
+	<!-- TESTS -->
+	<target name="run-tests">
+		<delete dir="${junit.output.dir}" failOnError="false" />
+		<mkdir dir="${junit.output.dir}" />
+
+		<!--  serveur testing -->
+		<junit fork="yes" printsummary="withOutAndErr">
+			<classpath>
+				<path refid="compile.classpath" />
+				<pathelement location="${build.dir}" />
+			</classpath>
+			<formatter type="xml" />
+			<test name="fr.isen.tetris.TestShape" todir="${junit.output.dir}" />
+		</junit>
+	</target>
+	
+	<target name="run">
+        <java jar="${dist.dir}/${app.name}.jar" fork="true"/>
+    </target>
+
+
+</project>
