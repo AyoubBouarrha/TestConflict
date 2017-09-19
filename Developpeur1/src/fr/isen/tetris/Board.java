@@ -31,7 +31,11 @@ public class Board extends JPanel implements ActionListener {
    * 
    * Description : Adapter pour les touches du clavier <br/>
    */
+<<<<<<< HEAD
   class TAdapter extends KeyAdapter {
+=======
+  /**class TAdapter extends KeyAdapter {
+>>>>>>> 98e6b0e7c509f9a84ed8ecc94e175d330b5557dd
 
     
     @Override
