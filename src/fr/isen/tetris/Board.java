@@ -20,7 +20,7 @@ import javax.swing.Timer;
  * Possède une liste finie définie dans l'énumération imbriquée Tetrominoes
  * 
 <<<<<<< HEAD
-@author DEV1
+@author Origin
  */
 public class Board extends JPanel implements ActionListener {
 
