@@ -20,7 +20,7 @@ import javax.swing.Timer;
  * Possède une liste finie définie dans l'énumération imbriquée Tetrominoes
  * 
 <<<<<<< HEAD
-@author DEV1
+@author Origin
  */
 public class Board extends JPanel implements ActionListener {
 
@@ -31,6 +31,9 @@ public class Board extends JPanel implements ActionListener {
    * 
    * Description : Adapter pour les touches du clavier <br/>
    */
+<<<<<<< HEAD
+  class TAdapter extends KeyAdapter {
+=======
 	//Q2-a
   /**class TAdapter extends KeyAdapter {
 >>>>>>> 98e6b0e7c509f9a84ed8ecc94e175d330b5557dd
