@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-/**
+/**dd
  * Project : Tetris <br/>
  * Package : fr.isen.tetris <br/>
  * Description : Classe représentant une forme géométrique <br/>
