@@ -20,11 +20,7 @@ import javax.swing.Timer;
  * Possède une liste finie définie dans l'énumération imbriquée Tetrominoes
  * 
 <<<<<<< HEAD
- * @author DEV2
-=======
- * @author DEV1
->>>>>>> 8e3f8865d40199a6244a6adcaf73625ecb8321ff
- * @see http://zetcode.com/tutorials/javagamestutorial/tetris/
+@author DEV1
  */
 public class Board extends JPanel implements ActionListener {
 
@@ -35,9 +31,6 @@ public class Board extends JPanel implements ActionListener {
    * 
    * Description : Adapter pour les touches du clavier <br/>
    */
-<<<<<<< HEAD
-  class TAdapter extends KeyAdapter {
-=======
 	//Q2-a
   /**class TAdapter extends KeyAdapter {
 >>>>>>> 98e6b0e7c509f9a84ed8ecc94e175d330b5557dd
